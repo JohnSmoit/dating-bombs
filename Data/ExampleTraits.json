@@ -1,0 +1,56 @@
+[
+	{
+		"name": "ExampleTrait_1",
+		"displayLabel":"Exampleish",
+		"description":"This person is a fan of Exampling.",
+		"dialogue": [
+			{
+				"message":"Hello, are you a fan of examples?",
+				"responses": {
+					"goodResponse": "Why yes I am!",
+					"badResponse": "HEEEEEELLLLLLL NOOOOOOO!",
+					"goodResponseText": "Well isn't that the greatest!",
+					"badResponseText": "WHAT IS WRONG WITH U M8?!"
+				}
+			}
+		],
+		"appearance": [
+			{
+				"layer":"Clothing",
+				"texPath":"Characters/Clothing/clothes1_brown.png"
+			}
+		]
+	},
+	{
+		"name":"ExampleTrait_2",
+		"displayLabel":"Example Hater",
+		"description":"This person positively despises examples!",
+		"dialogue": [
+			{
+				"message":"I absolutely despise examples and will annihilate all who enjoy them MWAHAHAHA!",
+				"responses": {
+					"goodResponse": "Me too! Fuck examples!",
+					"badResponse": "Good, soon we shall enter an example-free era of education!",
+					"goodResponseText": "WTF? Examples are like, so, great!",
+					"badResponseText": "HERESY! I SHALL STRIKE YOU DOWN IN THE NAME OF THE LORD!"
+				}
+			}
+		]
+	},
+	{
+		"name":"ExampleTrait_3",
+		"displayLabel":"Example Builder",
+		"description":"This person professionally designs examples for easy comprehension of new material",
+		"dialogue": [
+			{
+				"message":"I create examples n stuff",
+				"responses": {
+					"goodResponse": "Why are you wasting so much time writing example dialogue that won't even be in the actual game? EH?",
+					"badResponse": "I dunno man, procrastiination I guess",
+					"goodResponseText": "Wow!",
+					"badResponseText": "Is that all you have to say?"
+				}
+			}
+		]
+	}	
+]

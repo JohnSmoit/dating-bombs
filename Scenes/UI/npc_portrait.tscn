@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://y3xuncn5lfpk"]
+
+[ext_resource type="Texture2D" uid="uid://dgenvxr3w2xxy" path="res://Resources/Textures/Characters/Base/skin1.png" id="1_kq5ye"]
+[ext_resource type="Script" path="res://Scripts/UI/npc_portrait.gd" id="1_prysa"]
+
+[node name="NPCPortrait" type="Control"]
+custom_minimum_size = Vector2(256, 256)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 256.0
+offset_bottom = 256.0
+grow_vertical = 2
+size_flags_vertical = 0
+script = ExtResource("1_prysa")
+
+[node name="PortraitDisplay" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(256, 256)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_kq5ye")
+expand_mode = 1
+
+[node name="SubViewport" type="SubViewport" parent="."]
+disable_3d = true

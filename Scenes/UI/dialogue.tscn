@@ -1,0 +1,101 @@
+[gd_scene load_steps=7 format=3 uid="uid://btosonxlx86ae"]
+
+[ext_resource type="Texture2D" uid="uid://dgenvxr3w2xxy" path="res://Resources/Textures/Characters/Base/skin1.png" id="1_klhyh"]
+[ext_resource type="Theme" uid="uid://7m3jicdkoo03" path="res://Resources/Themes/ui_default.tres" id="1_okh6b"]
+[ext_resource type="Script" path="res://Scripts/UI/dialogue.gd" id="2_gfv8i"]
+[ext_resource type="PackedScene" uid="uid://y3xuncn5lfpk" path="res://Scenes/UI/npc_portrait.tscn" id="3_am32g"]
+
+[sub_resource type="Gradient" id="Gradient_cuiy0"]
+colors = PackedColorArray(0.133196, 0.133196, 0.133196, 1, 0, 0, 0, 0)
+metadata/_snap_enabled = true
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_5m1kw"]
+gradient = SubResource("Gradient_cuiy0")
+
+[node name="Dialogue" type="TextureRect"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_okh6b")
+texture = SubResource("GradientTexture1D_5m1kw")
+script = ExtResource("2_gfv8i")
+
+[node name="HBoxContainer" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -577.0
+offset_top = -131.0
+offset_right = 575.0
+offset_bottom = 125.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="NPCPortrait" parent="HBoxContainer" instance=ExtResource("3_am32g")]
+layout_mode = 0
+offset_left = 427.0
+offset_top = -40.0
+offset_right = 683.0
+offset_bottom = 216.0
+grow_vertical = 1
+
+[node name="PlayerPortrait" type="TextureRect" parent="HBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(256, 256)
+layout_mode = 2
+offset_left = 576.0
+offset_right = 832.0
+offset_bottom = 256.0
+grow_vertical = 2
+size_flags_vertical = 0
+texture = ExtResource("1_klhyh")
+expand_mode = 1
+
+[node name="Dialogue" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -281.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme_override_constants/margin_left = 18
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 18
+theme_override_constants/margin_bottom = 4
+
+[node name="VSplitContainer" type="VSplitContainer" parent="Dialogue"]
+layout_mode = 2
+theme_override_constants/separation = -10
+
+[node name="NameLabel" type="Label" parent="Dialogue/VSplitContainer"]
+custom_minimum_size = Vector2(240, 40)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 3
+text = "Jerry Jerryson
+"
+
+[node name="DialogueBox" type="Label" parent="Dialogue/VSplitContainer"]
+custom_minimum_size = Vector2(0, 120)
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 4.15
+text = "The Quick Brown Fox Jumps over the sleepy dog.
+"
+
+[node name="CloseButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 22.0
+offset_top = 22.0
+offset_right = 30.0
+offset_bottom = 30.0
+text = "X"

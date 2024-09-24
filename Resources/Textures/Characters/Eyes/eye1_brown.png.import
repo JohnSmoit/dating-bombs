@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://3v7tyur7k8wl"
-path="res://.godot/imported/tiles-solid.png-ca95dd5acdac1ce864927e92daa91e1c.ctex"
+uid="uid://cst02v01n8fol"
+path="res://.godot/imported/eye1_brown.png-81134e137e2c1b28cce867b01d70f49f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/tiles-solid.png"
-dest_files=["res://.godot/imported/tiles-solid.png-ca95dd5acdac1ce864927e92daa91e1c.ctex"]
+source_file="res://Resources/Textures/Characters/Eyes/eye1_brown.png"
+dest_files=["res://.godot/imported/eye1_brown.png-81134e137e2c1b28cce867b01d70f49f.ctex"]
 
 [params]
 

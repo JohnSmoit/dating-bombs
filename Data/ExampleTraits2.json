@@ -1,0 +1,28 @@
+[
+	{
+		"name": "ExampleTrait_4",
+		"displayLabel":"Person who examplifies idiocy",
+		"description":"This person is very dumb",
+		"dialogue": [
+			{
+				"message":"i am not smart and not smart x 2",
+				"responses": {
+					"goodResponse": "Why yes I am!",
+					"badResponse": "HEEEEEELLLLLLL NOOOOOOO!",
+					"goodResponseText": "Well isn't that the greatest!",
+					"badResponseText": "WHAT IS WRONG WITH U M8?!"
+				}
+			}
+		],
+		"appearance": [
+			{
+				"layer":"Accessory",
+				"texPath":"Characters/Accessory/glasses1.png"
+			},
+			{
+				"layer":"Hair",
+				"texPath":"Characters/Hair/hair1_black.png"
+			}
+		]
+	},
+]

@@ -1,0 +1,46 @@
+[gd_resource type="Theme" load_steps=5 format=3 uid="uid://7m3jicdkoo03"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_irkc6"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8lk8d"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_utuc1"]
+content_margin_left = 10.0
+content_margin_top = 7.0
+content_margin_right = 10.0
+content_margin_bottom = 10.0
+bg_color = Color(0.939345, 0.88839, 0.861197, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.824934, 0.595147, 0.302633, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_swji8"]
+content_margin_left = 10.0
+content_margin_top = 7.0
+content_margin_right = 10.0
+content_margin_bottom = 10.0
+bg_color = Color(0.939345, 0.88839, 0.861197, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.824934, 0.595147, 0.302633, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+
+[resource]
+Button/colors/font_outline_color = Color(0.823529, 0.596078, 0.301961, 1)
+Button/styles/normal = SubResource("StyleBoxFlat_irkc6")
+Control/styles/control_styling = SubResource("StyleBoxFlat_8lk8d")
+Label/colors/font_color = Color(0.823529, 0.596078, 0.301961, 1)
+Label/colors/font_outline_color = Color(0.819608, 0.443137, 0, 1)
+Label/constants/outline_size = 5
+Label/font_sizes/font_size = 24
+Label/styles/normal = SubResource("StyleBoxFlat_utuc1")
+RichTextLabel/colors/default_color = Color(0.760729, 0.46383, 0.308498, 1)
+RichTextLabel/styles/normal = SubResource("StyleBoxFlat_swji8")
