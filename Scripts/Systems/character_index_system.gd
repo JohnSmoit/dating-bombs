@@ -26,7 +26,7 @@ func _read_traits_files():
 		var err = data_dir.list_dir_begin()
 		if err != OK:
 			print("Failed to open traits directory!\nReason: %s", error_string(err))
-			pass
+			return
 		
 		var file_name = data_dir.get_next()
 		while file_name != "":

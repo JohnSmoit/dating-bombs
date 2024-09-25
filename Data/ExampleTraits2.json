@@ -17,11 +17,11 @@
 		"appearance": [
 			{
 				"layer":"Accessory",
-				"texPath":"Characters/Accessory/glasses1.png"
+				"texPath":"Accessory/glasses1.png"
 			},
 			{
 				"layer":"Hair",
-				"texPath":"Characters/Hair/hair1_black.png"
+				"texPath":"Hair/hair1_black.png"
 			}
 		]
 	},

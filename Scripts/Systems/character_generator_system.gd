@@ -9,23 +9,24 @@ const NPCCharacter = preload("res://Scripts/Entities/npc_character.gd")
 
 # node/scene references
 @onready var character_scene = preload("res://Scenes/Entities/npc_character.tscn")
-@onready var character_index : CharacterIndexSystem = $/root/MainScene/Systems/CharacterIndexSystem
-@onready var npc_dialogue_system : NPCDialogueSystem = $/root/MainScene/Systems/NPCDialogueSystem
-
+@onready var character_index : CharacterIndexSystem = $/root/Systems/CharacterIndexSystem
+@onready var npc_dialogue_system : NPCDialogueSystem = $/root/Systems/NPCDialogueSystem
+@onready var sprite_bakery : CharacterSpriteBakery = $/root/Systems/CharacterSpriteBakery
 
 func initialize():
 	generate_level_characters()
 
 
 func generate_level_characters():
-	var character = generate_character()
-	spawn_character(character, randf(), null)
-	pass
+	for i in range(3):
+		var character = generate_character()
+		spawn_character(character, randf(), null)
 
 func generate_character():
 	var new_character = character_scene.instantiate()
 	var traits = _pick_random_traits(3, null)
 	new_character.set_traits(traits)
+	_finalize_character_appearance(new_character)
 	
 	return new_character
 
@@ -34,7 +35,7 @@ func generate_character():
 func spawn_character(character : NPCCharacter, spawnRange : float, spawnRegion):
 	# place character at location in world depending on parameters
 	character_index.add_character(character)
-	character.position = Vector2(0, -200)
+	character.position = Vector2(spawnRange * 1000, -200)
 	
 	# connect signals to where they need to go
 	character.player_interact.connect(npc_dialogue_system._on_npc_interacted)
@@ -56,3 +57,11 @@ func _pick_random_traits(numTraits, selectionFilter):
 		chosen.append(potential_trait)
 		
 	return chosen
+
+func _finalize_character_appearance(npc : NPCCharacter):
+	for layer in range(CharacterSpriteBakery.SpriteLayers.LAYERS_COUNT):
+		var layer_modifier = sprite_bakery.random_appearance_modifier(layer)
+		npc.set_default_layer(layer, layer_modifier)
+	
+	#for layer_modifier in npc.get_appearance_set():
+		#print("Layer: %s, Texture %s" % [layer_modifier.layer, layer_modifier.path_name])

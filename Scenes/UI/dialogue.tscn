@@ -1,9 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://btosonxlx86ae"]
+[gd_scene load_steps=5 format=3 uid="uid://btosonxlx86ae"]
 
-[ext_resource type="Texture2D" uid="uid://dgenvxr3w2xxy" path="res://Resources/Textures/Characters/Base/skin1.png" id="1_klhyh"]
 [ext_resource type="Theme" uid="uid://7m3jicdkoo03" path="res://Resources/Themes/ui_default.tres" id="1_okh6b"]
 [ext_resource type="Script" path="res://Scripts/UI/dialogue.gd" id="2_gfv8i"]
-[ext_resource type="PackedScene" uid="uid://y3xuncn5lfpk" path="res://Scenes/UI/npc_portrait.tscn" id="3_am32g"]
 
 [sub_resource type="Gradient" id="Gradient_cuiy0"]
 colors = PackedColorArray(0.133196, 0.133196, 0.133196, 1, 0, 0, 0, 0)
@@ -36,13 +34,13 @@ offset_bottom = 125.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="NPCPortrait" parent="HBoxContainer" instance=ExtResource("3_am32g")]
+[node name="NPCCharacterPortrait" type="TextureRect" parent="HBoxContainer"]
+custom_minimum_size = Vector2(256, 256)
 layout_mode = 0
-offset_left = 427.0
-offset_top = -40.0
-offset_right = 683.0
-offset_bottom = 216.0
-grow_vertical = 1
+offset_left = 440.0
+offset_right = 696.0
+offset_bottom = 256.0
+expand_mode = 1
 
 [node name="PlayerPortrait" type="TextureRect" parent="HBoxContainer"]
 visible = false
@@ -53,7 +51,6 @@ offset_right = 832.0
 offset_bottom = 256.0
 grow_vertical = 2
 size_flags_vertical = 0
-texture = ExtResource("1_klhyh")
 expand_mode = 1
 
 [node name="Dialogue" type="MarginContainer" parent="."]
@@ -99,3 +96,32 @@ offset_top = 22.0
 offset_right = 30.0
 offset_bottom = 30.0
 text = "X"
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -25.0
+offset_bottom = 25.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 250
+theme_override_constants/margin_right = 250
+
+[node name="Responses" type="VBoxContainer" parent="MarginContainer"]
+visible = false
+layout_mode = 2
+
+[node name="GoodResponse" type="Button" parent="MarginContainer/Responses"]
+layout_mode = 2
+text = "Good Response"
+
+[node name="BadResponse" type="Button" parent="MarginContainer/Responses"]
+layout_mode = 2
+text = "Bad Response
+"
+
+[connection signal="pressed" from="MarginContainer/Responses/GoodResponse" to="." method="_on_good_response_pressed"]
+[connection signal="pressed" from="MarginContainer/Responses/BadResponse" to="." method="_on_bad_response_pressed"]

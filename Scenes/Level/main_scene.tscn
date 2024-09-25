@@ -1,12 +1,8 @@
-[gd_scene load_steps=8 format=4 uid="uid://byi36xrbm8koi"]
+[gd_scene load_steps=4 format=4 uid="uid://byi36xrbm8koi"]
 
 [ext_resource type="PackedScene" uid="uid://cymsw3ahoyt6o" path="res://Scenes/Entities/player.tscn" id="1_fqtc3"]
 [ext_resource type="TileSet" uid="uid://4eu0gj4lqn83" path="res://Resources/Tiles/tiles_placeholder.tres" id="3_0jebm"]
 [ext_resource type="PackedScene" uid="uid://btosonxlx86ae" path="res://Scenes/UI/dialogue.tscn" id="3_uqtn3"]
-[ext_resource type="Script" path="res://Scripts/Systems/game_master.gd" id="4_0jya6"]
-[ext_resource type="Script" path="res://Scripts/Systems/character_generator_system.gd" id="4_ukee7"]
-[ext_resource type="Script" path="res://Scripts/Systems/character_index_system.gd" id="6_ep41f"]
-[ext_resource type="Script" path="res://Scripts/Systems/npc_dialogue_system.gd" id="7_e110r"]
 
 [node name="MainScene" type="Node2D"]
 
@@ -35,15 +31,3 @@ position = Vector2(583, 176)
 
 [node name="Dialogue" parent="CanvasLayer" instance=ExtResource("3_uqtn3")]
 visible = false
-
-[node name="Systems" type="Node" parent="."]
-script = ExtResource("4_0jya6")
-
-[node name="CharacterGeneratorSystem" type="Node" parent="Systems"]
-script = ExtResource("4_ukee7")
-
-[node name="CharacterIndexSystem" type="Node" parent="Systems"]
-script = ExtResource("6_ep41f")
-
-[node name="NPCDialogueSystem" type="Node" parent="Systems"]
-script = ExtResource("7_e110r")

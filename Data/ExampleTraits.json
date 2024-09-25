@@ -17,7 +17,7 @@
 		"appearance": [
 			{
 				"layer":"Clothing",
-				"texPath":"Characters/Clothing/clothes1_brown.png"
+				"texPath":"Clothing/clothes1_brown.png"
 			}
 		]
 	},
