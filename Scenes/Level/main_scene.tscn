@@ -1,21 +1,21 @@
-[gd_scene load_steps=4 format=4 uid="uid://byi36xrbm8koi"]
+[gd_scene load_steps=7 format=4 uid="uid://byi36xrbm8koi"]
 
 [ext_resource type="PackedScene" uid="uid://cymsw3ahoyt6o" path="res://Scenes/Entities/player.tscn" id="1_fqtc3"]
+[ext_resource type="Script" path="res://Scripts/Entities/bomb.gd" id="2_ove0h"]
 [ext_resource type="TileSet" uid="uid://4eu0gj4lqn83" path="res://Resources/Tiles/tiles_placeholder.tres" id="3_0jebm"]
+[ext_resource type="Texture2D" uid="uid://casojs7wyj348" path="res://icon.svg" id="3_g7llp"]
 [ext_resource type="PackedScene" uid="uid://btosonxlx86ae" path="res://Scenes/UI/dialogue.tscn" id="3_uqtn3"]
+
+[sub_resource type="Gradient" id="Gradient_evo5y"]
+offsets = PackedFloat32Array(0, 0.46875, 1)
+colors = PackedColorArray(1, 0.898737, 0.788295, 1, 1, 0.478137, 0.174738, 1, 0.462273, 0.12686, 0.00113536, 1)
 
 [node name="MainScene" type="Node2D"]
 
 [node name="SceneCharacters" type="Node2D" parent="."]
 
-[node name="CharacterBody2D" parent="." instance=ExtResource("1_fqtc3")]
-collision_layer = 4
-collision_mask = 5
-
-[node name="RemoteTransform2D" type="RemoteTransform2D" parent="CharacterBody2D"]
-remote_path = NodePath("../../Camera2D")
-
 [node name="MapTiles" type="Node2D" parent="."]
+texture_filter = 1
 scale = Vector2(4, 4)
 
 [node name="Layer0" type="TileMapLayer" parent="MapTiles"]
@@ -26,6 +26,34 @@ tile_set = ExtResource("3_0jebm")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(583, 176)
+
+[node name="CharacterBody2D" parent="." instance=ExtResource("1_fqtc3")]
+collision_layer = 4
+collision_mask = 5
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="CharacterBody2D"]
+remote_path = NodePath("../../Camera2D")
+
+[node name="Bomb" type="Node2D" parent="CharacterBody2D"]
+script = ExtResource("2_ove0h")
+
+[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D/Bomb"]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_g7llp")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="CharacterBody2D/Bomb"]
+position = Vector2(33, -30)
+amount = 24
+direction = Vector2(1, -1)
+spread = 17.31
+gravity = Vector2(0, 0)
+initial_velocity_min = 24.0
+initial_velocity_max = 24.0
+angle_min = -180.0
+scale_amount_min = 4.0
+scale_amount_max = 9.0
+color = Color(0.970758, 0.61996, 0, 1)
+color_ramp = SubResource("Gradient_evo5y")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
