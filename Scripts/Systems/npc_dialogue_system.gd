@@ -2,13 +2,14 @@ class_name NPCDialogueSystem
 extends Node
 
 # node/scene references
-@onready var dialogue_ui : CharacterDialogue = $/root/MainScene/CanvasLayer/Dialogue
+@onready var dialogue_ui : CharacterDialogue = $CanvasLayer/Dialogue
 
 @export var message_scroll_time : float = 2.0
 
 #private variables
 var _current_npc : NPCCharacter = null
 var _unrevealed_traits : Array[Trait] = []
+
 
 func _on_npc_interacted(npc : NPCCharacter):
 	if !dialogue_ui.visible:
@@ -22,7 +23,7 @@ func _on_npc_interacted(npc : NPCCharacter):
 func _pick_random_message():
 	var remaining_traits = _unrevealed_traits.size()
 	if remaining_traits <= 0:
-		pass
+		return null
 	
 	var chosen_trait = _unrevealed_traits.pop_at(randi_range(0, remaining_traits - 1))
 	
@@ -33,3 +34,16 @@ func _bind_npc_info(npc : NPCCharacter):
 	_current_npc = npc
 	_unrevealed_traits.append_array(npc.traits)
 	dialogue_ui.portrait_from_npc(npc)
+
+func _on_dialogue_picked_bad_response():
+	dialogue_ui.visible = false
+	# TODO: Evaluate the outcome of the dialogue and update game state accordingly
+
+func _on_dialogue_picked_good_reponse():
+	var next_trait_message = _pick_random_message()
+	if next_trait_message:
+		dialogue_ui.set_message_delay(1.2)
+		dialogue_ui.display_message_timed(next_trait_message, message_scroll_time)
+	else:
+		dialogue_ui.visible = false;
+		#TODO: Evaluate the outcome of the dialogue and update game state accordingly

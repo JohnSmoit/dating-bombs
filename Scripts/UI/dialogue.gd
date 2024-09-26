@@ -11,9 +11,15 @@ extends TextureRect
 @onready var good_response : Button = $MarginContainer/Responses/GoodResponse
 @onready var bad_response : Button = $MarginContainer/Responses/BadResponse
 
+@onready var post_scroll_timer : Timer = $PostScrollTimer
+
 @onready var sprite_bakery : CharacterSpriteBakery = $/root/Systems/CharacterSpriteBakery
 
 
+enum {
+	BAD_RESPONSE,
+	GOOD_RESPONSE
+}
 #public member variables
 
 #private member variables
@@ -24,8 +30,17 @@ var _message_index : int = 0
 var _next_character_timer : float = 0
 var _delay_tick : float = 0
 
+var _flag_exit = false
+var _exit_response_type = BAD_RESPONSE
+
+# signals
+signal picked_good_reponse()
+signal picked_bad_response()
+
+
 func _ready():
 	close_button.pressed.connect(_on_close_button_pressed)
+	post_scroll_timer.timeout.connect(_handle_post_dialogue)
 	
 	var default_image = load("res://Resources/Textures/Characters/Base/skin2.png")
 	npc_portrait.texture = ImageTexture.create_from_image(default_image)
@@ -65,6 +80,7 @@ func reset_message_state():
 	
 	dialogue_box.text = ""
 	responses_container.visible = false
+	_flag_exit = false
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -81,8 +97,17 @@ func _process(delta):
 			_next_character_timer = 0
 			
 			if _message_index == _message_text.length():
-				# show responses
-				responses_container.visible = true
+				post_scroll_timer.start(1)
+
+
+func _handle_post_dialogue():
+	if !_flag_exit:
+		responses_container.visible = true
+	elif _exit_response_type == BAD_RESPONSE:
+		picked_bad_response.emit()
+	else:
+		picked_good_reponse.emit()
+
 
 func _on_close_button_pressed():
 	reset_message_state()
@@ -94,11 +119,18 @@ func _toggle_visibility():
 func _is_running_message():
 	return _message_index < _message_text.length()
 
+func _set_exit_status(response_type):
+	_flag_exit = true
+	_exit_response_type = response_type
+	#TODO: set the appropriate signal to be dispatched when flagged
+
 func _on_bad_response_pressed():
 	responses_container.visible = false;
+	
+	_set_exit_status(BAD_RESPONSE)
 	scroll_text_timed(_current_message.get_response(Trait.RESPONSE_BAD)[Trait.NPC_RESPONSE_TEXT], 2.0, 1.2)
-	pass
 func _on_good_response_pressed():
 	responses_container.visible = false;
+	
+	_set_exit_status(GOOD_RESPONSE)
 	scroll_text_timed(_current_message.get_response(Trait.RESPONSE_GOOD)[Trait.NPC_RESPONSE_TEXT], 2.0, 1.2)
-	pass

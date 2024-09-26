@@ -123,5 +123,8 @@ layout_mode = 2
 text = "Bad Response
 "
 
+[node name="PostScrollTimer" type="Timer" parent="."]
+one_shot = true
+
 [connection signal="pressed" from="MarginContainer/Responses/GoodResponse" to="." method="_on_good_response_pressed"]
 [connection signal="pressed" from="MarginContainer/Responses/BadResponse" to="." method="_on_bad_response_pressed"]
