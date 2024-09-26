@@ -114,7 +114,7 @@ func random_appearance_modifier(layer : SpriteLayers):
 	return TraitAppearanceModifier.new(index, layer, path)
 
 func request_character_texture(texture_mode, npc_info : NPCCharacter, texture):
-	print("Traits: %s %s %s" % [npc_info.traits[0].name, npc_info.traits[1].name, npc_info.traits[2].name])
+	print("Traits: %s %s %s" % [npc_info.traits[0].displayLabel, npc_info.traits[1].displayLabel, npc_info.traits[2].displayLabel])
 	var appearance_modifiers = npc_info.get_appearance_set()
 	for layer_modifier in appearance_modifiers: # NOTE: As expected, this is very slow, but it will have to do for now
 		var image = _get_or_load_image(layer_modifier)

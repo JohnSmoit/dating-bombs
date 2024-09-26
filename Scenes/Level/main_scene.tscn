@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=4 uid="uid://byi36xrbm8koi"]
+[gd_scene load_steps=12 format=4 uid="uid://byi36xrbm8koi"]
 
 [ext_resource type="PackedScene" uid="uid://cymsw3ahoyt6o" path="res://Scenes/Entities/player.tscn" id="1_fqtc3"]
 [ext_resource type="Script" path="res://Scripts/Entities/camera_2d.gd" id="1_rnbvx"]
@@ -7,6 +7,7 @@
 [ext_resource type="TileSet" uid="uid://dkoyysgy7gdjt" path="res://Resources/Tiles/tiles_solid.tres" id="2_qf8ww"]
 [ext_resource type="TileSet" uid="uid://ctfltgnba0rk6" path="res://Resources/Tiles/tiles_props.tres" id="2_rxs1i"]
 [ext_resource type="Texture2D" uid="uid://casojs7wyj348" path="res://icon.svg" id="3_g7llp"]
+[ext_resource type="PackedScene" uid="uid://cp8pxjs8dnews" path="res://Scenes/UI/hud.tscn" id="8_61vlj"]
 
 [sub_resource type="Gradient" id="Gradient_7oi2h"]
 offsets = PackedFloat32Array(0.02, 0.29, 1)
@@ -71,18 +72,18 @@ tile_set = ExtResource("2_qf8ww")
 [node name="SceneCharacters" type="Node2D" parent="."]
 position = Vector2(-1, 0)
 
-[node name="CharacterBody2D" parent="." instance=ExtResource("1_fqtc3")]
+[node name="Player" parent="." instance=ExtResource("1_fqtc3")]
 collision_layer = 4
 collision_mask = 5
 
-[node name="Bomb" type="Node2D" parent="CharacterBody2D"]
+[node name="Bomb" type="Node2D" parent="Player"]
 script = ExtResource("2_ove0h")
 
-[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D/Bomb"]
+[node name="Sprite2D" type="Sprite2D" parent="Player/Bomb"]
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("3_g7llp")
 
-[node name="CPUParticles2D" type="CPUParticles2D" parent="CharacterBody2D/Bomb"]
+[node name="CPUParticles2D" type="CPUParticles2D" parent="Player/Bomb"]
 position = Vector2(33, -30)
 amount = 24
 direction = Vector2(1, -1)
@@ -96,12 +97,12 @@ scale_amount_max = 9.0
 color = Color(0.970758, 0.61996, 0, 1)
 color_ramp = SubResource("Gradient_evo5y")
 
-[node name="PointLight2D" type="PointLight2D" parent="CharacterBody2D/Bomb"]
+[node name="PointLight2D" type="PointLight2D" parent="Player/Bomb"]
 color = Color(1, 0.424044, 0.0845414, 1)
 energy = 1.76
 texture = ExtResource("3_g7llp")
 
-[node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
+[node name="Camera2D" type="Camera2D" parent="Player"]
 zoom = Vector2(0.5, 0.5)
 script = ExtResource("1_rnbvx")
 radius_max = 600.0
@@ -118,3 +119,7 @@ shadow_enabled = true
 shadow_color = Color(0, 0, 0, 1)
 shadow_filter = 1
 shadow_filter_smooth = 2.0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="HUD" parent="CanvasLayer" instance=ExtResource("8_61vlj")]

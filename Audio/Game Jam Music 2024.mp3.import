@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bilkyljb7nods"
+path="res://.godot/imported/Game Jam Music 2024.mp3-9da5862d92f4e339f8aac1390122bfc4.mp3str"
+
+[deps]
+
+source_file="res://Audio/Game Jam Music 2024.mp3"
+dest_files=["res://.godot/imported/Game Jam Music 2024.mp3-9da5862d92f4e339f8aac1390122bfc4.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

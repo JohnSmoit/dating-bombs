@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://pr5k066bd6bq"]
+[gd_scene load_steps=6 format=3 uid="uid://pr5k066bd6bq"]
 
 [ext_resource type="Script" path="res://Scripts/Entities/npc_character.gd" id="1_dphl2"]
 [ext_resource type="Texture2D" uid="uid://casojs7wyj348" path="res://icon.svg" id="2_dbamg"]
+[ext_resource type="Script" path="res://Scripts/Entities/boing_boing.gd" id="2_mmlji"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4wshi"]
 radius = 51.0
@@ -15,7 +16,10 @@ collision_layer = 2
 collision_mask = 3
 script = ExtResource("1_dphl2")
 
-[node name="TemporarySprite" type="Sprite2D" parent="."]
+[node name="BoingBoing2D" type="Node2D" parent="."]
+script = ExtResource("2_mmlji")
+
+[node name="TemporarySprite" type="Sprite2D" parent="BoingBoing2D"]
 rotation = 3.14159
 scale = Vector2(0.828125, 1.05469)
 texture = ExtResource("2_dbamg")
@@ -29,3 +33,6 @@ collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_2nt2o")
+
+[node name="WanderTimer" type="Timer" parent="."]
+one_shot = true

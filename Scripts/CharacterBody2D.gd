@@ -3,6 +3,8 @@ extends CharacterBody2D
 
 @onready var boing_boing = $BoingBoing
 
+@export var max_stamina = 5.0
+
 const SPEED = 600.0
 const JUMP_VELOCITY = -1000.0
 const PLAYER_SPEED_MULT = 1.8
@@ -12,6 +14,9 @@ const MAX_JUMP_CHARGE_TIME = 1
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var _jump_charge_amount = 0
+var _flag_no_sprint = false
+
+@onready var stamina = max_stamina
 
 func _physics_process(delta):
 	# Add the gravity.
@@ -19,7 +24,21 @@ func _physics_process(delta):
 		velocity.y += gravity * delta
 
 	var direction = Input.get_axis("player_left", "player_right")
-	var adjusted_direction = direction * (1 + float(Input.is_action_pressed("player_sprint")) * PLAYER_SPEED_MULT)
+	
+	var adjusted_direction = direction
+	if stamina > 0 and !_flag_no_sprint:
+		var is_sprinting = Input.is_action_pressed("player_sprint")
+		if is_sprinting:
+			adjusted_direction = direction * (1 + float(is_sprinting) * PLAYER_SPEED_MULT)
+			stamina -= delta
+			if stamina <= 0:
+				_flag_no_sprint = true
+		else:
+			stamina = min(max_stamina, stamina + delta)
+	elif _flag_no_sprint:
+		stamina = min(max_stamina, stamina + delta / 2)
+		if stamina >= max_stamina:
+			_flag_no_sprint = false
 	# Handle jump.
 
 

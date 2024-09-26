@@ -36,6 +36,7 @@ var _exit_response_type = BAD_RESPONSE
 # signals
 signal picked_good_reponse()
 signal picked_bad_response()
+signal window_closed()
 
 
 func _ready():
@@ -112,6 +113,7 @@ func _handle_post_dialogue():
 func _on_close_button_pressed():
 	reset_message_state()
 	_toggle_visibility()
+	window_closed.emit()
 
 func _toggle_visibility():
 	visible = !visible
@@ -129,6 +131,7 @@ func _on_bad_response_pressed():
 	
 	_set_exit_status(BAD_RESPONSE)
 	scroll_text_timed(_current_message.get_response(Trait.RESPONSE_BAD)[Trait.NPC_RESPONSE_TEXT], 2.0, 1.2)
+	window_closed.emit()
 func _on_good_response_pressed():
 	responses_container.visible = false;
 	
