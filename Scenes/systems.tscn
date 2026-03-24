@@ -1,11 +1,11 @@
 [gd_scene load_steps=7 format=3 uid="uid://d376dmasanssw"]
 
-[ext_resource type="Script" path="res://Scripts/Systems/game_master.gd" id="1_veqw6"]
-[ext_resource type="Script" path="res://Scripts/Systems/character_generator_system.gd" id="2_y3cvi"]
-[ext_resource type="Script" path="res://Scripts/Systems/character_index_system.gd" id="3_gb42y"]
-[ext_resource type="Script" path="res://Scripts/Systems/npc_dialogue_system.gd" id="4_ctumm"]
+[ext_resource type="Script" uid="uid://dx336bipqbnu4" path="res://Scripts/Systems/game_master.gd" id="1_veqw6"]
+[ext_resource type="Script" uid="uid://clgo0uctxdshl" path="res://Scripts/Systems/character_generator_system.gd" id="2_y3cvi"]
+[ext_resource type="Script" uid="uid://dwc2vdbrgtw7p" path="res://Scripts/Systems/character_index_system.gd" id="3_gb42y"]
+[ext_resource type="Script" uid="uid://bqklps8qr50o3" path="res://Scripts/Systems/npc_dialogue_system.gd" id="4_ctumm"]
 [ext_resource type="PackedScene" uid="uid://btosonxlx86ae" path="res://Scenes/UI/dialogue.tscn" id="5_76tvd"]
-[ext_resource type="Script" path="res://Scripts/Systems/character_sprite_bakery.gd" id="5_qim5m"]
+[ext_resource type="Script" uid="uid://ddpbnt6b6bjr3" path="res://Scripts/Systems/character_sprite_bakery.gd" id="5_qim5m"]
 
 [node name="Systems" type="Node"]
 script = ExtResource("1_veqw6")

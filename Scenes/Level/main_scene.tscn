@@ -1,9 +1,9 @@
 [gd_scene load_steps=12 format=4 uid="uid://byi36xrbm8koi"]
 
 [ext_resource type="PackedScene" uid="uid://cymsw3ahoyt6o" path="res://Scenes/Entities/player.tscn" id="1_fqtc3"]
-[ext_resource type="Script" path="res://Scripts/Entities/camera_2d.gd" id="1_rnbvx"]
+[ext_resource type="Script" uid="uid://cvdyr3v4134r1" path="res://Scripts/Entities/camera_2d.gd" id="1_rnbvx"]
 [ext_resource type="TileSet" uid="uid://dqtrfcurerghk" path="res://Resources/Tiles/tiles_walls.tres" id="2_mp884"]
-[ext_resource type="Script" path="res://Scripts/Entities/bomb.gd" id="2_ove0h"]
+[ext_resource type="Script" uid="uid://cd0y1vujg1tm8" path="res://Scripts/Entities/bomb.gd" id="2_ove0h"]
 [ext_resource type="TileSet" uid="uid://dkoyysgy7gdjt" path="res://Resources/Tiles/tiles_solid.tres" id="2_qf8ww"]
 [ext_resource type="TileSet" uid="uid://ctfltgnba0rk6" path="res://Resources/Tiles/tiles_props.tres" id="2_rxs1i"]
 [ext_resource type="Texture2D" uid="uid://casojs7wyj348" path="res://icon.svg" id="3_g7llp"]
@@ -27,7 +27,6 @@ colors = PackedColorArray(1, 0.898737, 0.788295, 1, 1, 0.478137, 0.174738, 1, 0.
 
 [node name="DirectionalLight2D2" type="DirectionalLight2D" parent="."]
 rotation = 0.307178
-scale = Vector2(1, 1)
 color = Color(0.596205, 0.518536, 1, 1)
 energy = 1.82
 shadow_enabled = true

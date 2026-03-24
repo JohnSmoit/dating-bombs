@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://btosonxlx86ae"]
 
 [ext_resource type="Theme" uid="uid://7m3jicdkoo03" path="res://Resources/Themes/ui_default.tres" id="1_okh6b"]
-[ext_resource type="Script" path="res://Scripts/UI/dialogue.gd" id="2_gfv8i"]
+[ext_resource type="Script" uid="uid://dlwcaj56xv8fx" path="res://Scripts/UI/dialogue.gd" id="2_gfv8i"]
 
 [sub_resource type="Gradient" id="Gradient_cuiy0"]
 colors = PackedColorArray(0.133196, 0.133196, 0.133196, 1, 0, 0, 0, 0)

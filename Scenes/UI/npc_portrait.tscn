@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://y3xuncn5lfpk"]
 
-[ext_resource type="Script" path="res://Scripts/UI/npc_portrait.gd" id="1_prysa"]
+[ext_resource type="Script" uid="uid://btv6kygr2resl" path="res://Scripts/UI/npc_portrait.gd" id="1_prysa"]
 
 [node name="NPCPortrait" type="Control"]
 custom_minimum_size = Vector2(256, 256)
